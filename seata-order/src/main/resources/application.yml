@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+seata:
+  application-id: ${spring.application.name} # 应用ID（与服务名一致）
+  service:
+    grouplist:
+      default: 127.0.0.1:8091
+
+spring:
+  application:
+    name: seata-order
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?autoReconnect=true&useSSL=false&allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: seata
+        username: nacos
+        password: nacos
+
+
+# 这两个配置需要放在bootstrap.yaml，不然项目启动的时候，logback环境找不到对应配置会产生LOG_PATH_IS_UNDEFINED文件
+logging:
+  file:
+    name: ${spring.application.name}
+    path: ./logs
+

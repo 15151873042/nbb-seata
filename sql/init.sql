@@ -1,0 +1,32 @@
+create table t_order(
+    id       int auto_increment primary key,
+    user_id  varchar(255)  null,
+    sku_code varchar(255)  null,
+    count    int default 0 null,
+    money    int default 0 null
+) charset = utf8mb4;
+
+
+
+create table t_stock(
+    id       int auto_increment comment '主键' primary key,
+    sku_code varchar(255)  null comment '商品编号',
+    count    int default 0 null comment '商品库存数量',
+    constraint commodity_codeunique (sku_code)
+) charset = utf8mb4;
+
+
+-- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
+CREATE TABLE `undo_log` (
+                            `id` bigint(20) NOT NULL AUTO_INCREMENT,
+                            `branch_id` bigint(20) NOT NULL,
+                            `xid` varchar(100) NOT NULL,
+                            `context` varchar(128) NOT NULL,
+                            `rollback_info` longblob NOT NULL,
+                            `log_status` int(11) NOT NULL,
+                            `log_created` datetime NOT NULL,
+                            `log_modified` datetime NOT NULL,
+                            `ext` varchar(100) DEFAULT NULL,
+                            PRIMARY KEY (`id`),
+                            UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
