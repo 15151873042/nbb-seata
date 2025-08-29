@@ -16,9 +16,9 @@ public class OrderController {
     @Resource
     private OrderServiceImpl orderService;
 
-    @GlobalTransactional(rollbackFor = Exception.class, timeoutMills = 30000,lockRetryInternal=3000,lockRetryTimes=10)
+    @GlobalTransactional(rollbackFor = Exception.class, timeoutMills = 30000, lockRetryInternal=3000, lockRetryTimes=10)
     @RequestMapping("/create")
-    public String createOrder(String userId, String skuCode, Integer count) {
+    public String createOrder() {
         orderService.createOrder("user_id_01", "sku_code_01", 1);
         return "success";
     }

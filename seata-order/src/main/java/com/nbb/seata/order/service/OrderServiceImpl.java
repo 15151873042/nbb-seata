@@ -34,9 +34,9 @@ public class OrderServiceImpl {
                 .money(10 * count)
                 .build();
 
-        throw new RuntimeException("测试事务回滚");
+//        throw new RuntimeException("测试事务回滚");
 
-//        orderMapper.insert(order);
+        orderMapper.insert(order);
 
     }
 }
