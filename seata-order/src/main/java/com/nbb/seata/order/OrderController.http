@@ -1,0 +1,6 @@
+### AT模式
+GET http://localhost:8081/at/create
+
+
+### TCC模式
+GET http://localhost:8081/tcc/create

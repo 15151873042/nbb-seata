@@ -1,4 +1,4 @@
-package com.nbb.seata.stock.model;
+package com.nbb.seata.stock.common.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

@@ -1,7 +1,7 @@
-package com.nbb.seata.stock.dao;
+package com.nbb.seata.stock.common.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.nbb.seata.stock.model.Stock;
+import com.nbb.seata.stock.common.model.Stock;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

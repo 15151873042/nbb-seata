@@ -1,10 +1,9 @@
-package com.nbb.seata.stock.service;
+package com.nbb.seata.stock.at;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.nbb.seata.stock.dao.StockMapper;
-import com.nbb.seata.stock.model.Stock;
+import com.nbb.seata.stock.common.dao.StockMapper;
+import com.nbb.seata.stock.common.model.Stock;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -12,17 +11,19 @@ import javax.annotation.Resource;
  * @author 胡鹏
  */
 @Service
-public class StockServiceImpl {
+public class AtStockServiceImpl implements AtStockService{
 
     @Resource
     private StockMapper stockMapper;
 
-    @Transactional(rollbackFor = Exception.class)
-    public void deductStock(String skuCode, Integer count) {
+    @Override
+    public boolean deductStock(String skuCode, Integer count) {
         LambdaUpdateWrapper<Stock> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.setSql("count = count - " +count);
         updateWrapper.eq(Stock::getSkuCode, skuCode);
 
         stockMapper.update(null, updateWrapper);
+
+        return true;
     }
 }

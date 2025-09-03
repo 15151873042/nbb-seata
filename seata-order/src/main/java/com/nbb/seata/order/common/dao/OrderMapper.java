@@ -1,7 +1,7 @@
-package com.nbb.seata.order.dao;
+package com.nbb.seata.order.common.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.nbb.seata.order.model.Order;
+import com.nbb.seata.order.common.model.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
