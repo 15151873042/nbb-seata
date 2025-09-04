@@ -1,0 +1,3 @@
+# 基于AT模式的代码，将application.yml中data-source-proxy-mode 为 XA即可
+seata:
+  data-source-proxy-mode: XA
